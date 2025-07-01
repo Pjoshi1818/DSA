@@ -117,17 +117,21 @@ int main() {
    case 2:
      st.pop();
            break;
-
-  case 3: {int x = st.peek(); 
+ case 3: {int x = st.peek(); 
                if (x != -1)
              cout << "Top element: " << x << endl;
      break;
             }
             case 4:
-  st.display();       break;           case 5:
-   cout << "nikal BOSDK" << endl;
+  st.display();   
+     break;          
+  
+  case 5:
+   cout << "exit.... " << endl;
         break;
-          default:
+        
+        
+        default:
     cout << "invalid " << endl;
         }
 
