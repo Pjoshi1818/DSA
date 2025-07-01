@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // #include <iostream>
 // using namespace std;
 
@@ -141,7 +141,7 @@ int main() {
     return 0;
 }
 
-=======
+
 // #include <iostream>
 // using namespace std;
 
@@ -278,5 +278,3 @@ int main() {
 
     return 0;
 }
-
->>>>>>> 77494c05874d066778621bd46c5a1bcb379c6b16
