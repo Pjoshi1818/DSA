@@ -59,7 +59,7 @@
 
 //     return 0;
 // }
-<<<<<<< HEAD
+
 // #include <iostream>
 // using namespace std;
 
@@ -180,7 +180,7 @@ int main() {
         cout << "Key is not found." << endl;
     }
 
-=======
+
 #include <iostream>
 using namespace std;
 
@@ -279,6 +279,5 @@ public:
 
     } while (n != 4);
 
->>>>>>> 77494c05874d066778621bd46c5a1bcb379c6b16
     return 0;
 }
