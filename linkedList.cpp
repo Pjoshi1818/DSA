@@ -108,6 +108,10 @@ public:
  
 Node* temp = head;
 for(int i= 0; i < pos-1;i++){
+    if(temp == nullptr){
+        cout<<"invliede";
+        return ;
+    }
     temp = temp->next;
 }
 
@@ -117,7 +121,20 @@ for(int i= 0; i < pos-1;i++){
 
     }
 
+int search(int key){
+        Node * temp =head;
+        int idx;
+        while(temp != NULL){
+            if(temp->data= key){
+            cout<<"found"<<" ";
+                return idx;
 
+            }
+            temp = temp ->next;
+            idx++;
+        }
+        return -1;
+}
 
 
 
@@ -153,5 +170,8 @@ int main()
     ll.mid(45,2);
     
     ll.printll();
+
+    cout<<ll.search(2);
     return 0;
 }
+   //   simple linked list 
