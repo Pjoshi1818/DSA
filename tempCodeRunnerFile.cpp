@@ -43,11 +43,9 @@ public:
         }
     }
 
+    // end-->
 
-                //end-->
-
-
-  void push_end(int val)
+    void push_end(int val)
     {
         Node *newnode = new Node(val);
 
@@ -63,37 +61,61 @@ public:
         }
     }
 
+    void pop_front()
+    {
+        if (head == NULL)
+        {
+            cout << "empty:";
+            return;
+        }
 
- void pop_front(){
-                if (head == NULL){
-                    cout <<"empty:";
-                    return ;
-                }
-         
-                    Node* temp = head;
-                    head = head ->next ;
-                    temp ->next = NULL;
+        Node *temp = head;
+        head = head->next;
+        temp->next = NULL;
 
-delete temp;
+        delete temp;
+    }
 
- }
-
-
-
-  void pop_end(){
-                if (head == NULL){
-                    cout <<"empty:";
-                    return ;
-                }
-                     Node* temp =head;
-                     while(temp ->next != tail){
-                        temp = temp->next;
-
-                     }
+    void pop_end()
+    {
+        if (head == NULL)
+        {
+            cout << "empty:";
+            return;
+        }
+        Node *temp = head;
+        while (temp->next != tail)
+        {
+            temp = temp->next;
+        }
         temp->next = NULL;
         delete tail;
         tail = temp;
-                    }
+    }
+
+    // mid
+    void mid(int val ,int  pos )
+    {
+
+        if (pos < 0){
+            cout<<"invlide pos...";
+            return ;
+        }
+        if (pos =0){
+            push_front(val);
+            return ;
+        }
+ 
+Node* temp = head;
+for(int i= 0; i <pos-1;i++){
+    temp = temp->next;
+}
+
+       Node *newnode = new Node(val);
+       newnode->next = temp->next;
+       temp->next = newnode;
+
+    }
 
 
 
@@ -111,10 +133,6 @@ delete temp;
     }
 };
 
-
-
-
-
 int main()
 {
     list ll;
@@ -123,16 +141,17 @@ int main()
     ll.push_front(2);
     ll.push_front(6);
 
-
     ll.push_end(456);
     // ll.printll();
 
-
     // ll.pop_front();
-ll.pop_end();
+    ll.pop_end();
 
-        ll.printll();
+    // ll.printll();
+
+
+    ll.mid(45,2);
+    
+    ll.printll();
     return 0;
 }
-
-
