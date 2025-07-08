@@ -138,16 +138,16 @@ int search(int key){
 
 
 
-    void printll()
-    {
-        Node *temp = head;
-        while (temp != NULL)
+        void printll()
         {
-            cout << temp->data << " ";
-            temp = temp->next;
+            Node *temp = head;
+            while (temp != NULL)
+            {
+                cout << temp->data << " ";
+                temp = temp->next;
+            }
+            cout << endl;
         }
-        cout << endl;
-    }
 };
 
 int main()
