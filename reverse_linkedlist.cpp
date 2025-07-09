@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
 class Node {
@@ -99,25 +100,12 @@ public:
         }
     }
 
-    int search(int key) {
-        Node *temp = head;
-        int idx = 0;
-        while (temp != NULL) {
-            if (temp->data == key) {
-                cout << "Found at index ";
-                return idx;
-            }
-            temp = temp->next;
-            idx++;
-        }
-        return -1;
-    }
-
-    void reverseList() {
+    // 1. Iterative method
+    void reverseIterative() {
         Node *prev = NULL;
         Node *curr = head;
         Node *next = NULL;
-        tail = head; // tail will become the old head
+        tail = head;
 
         while (curr != NULL) {
             next = curr->next;
@@ -126,6 +114,45 @@ public:
             curr = next;
         }
         head = prev;
+    }
+
+    // 2. Recursive method (helper)
+    Node* reverseRecursiveUtil(Node* node) {
+        if (node == NULL || node->next == NULL)
+            return node;
+
+        Node* newHead = reverseRecursiveUtil(node->next);
+        node->next->next = node;
+        node->next = NULL;
+        return newHead;
+    }
+
+    void reverseRecursive() {
+        tail = head;
+        head = reverseRecursiveUtil(head);
+    }
+
+    // 3. Stack-based method
+    void reverseUsingStack() {
+        if (!head) return;
+        stack<Node*> st;
+        Node* temp = head;
+        while (temp) {
+            st.push(temp);
+            temp = temp->next;
+        }
+
+        head = st.top();
+        st.pop();
+        temp = head;
+
+        while (!st.empty()) {
+            temp->next = st.top();
+            st.pop();
+            temp = temp->next;
+        }
+        temp->next = NULL;
+        tail = temp;
     }
 
     void printll() {
@@ -150,12 +177,13 @@ int main() {
     cout << "Original List: ";
     ll.printll();
 
-    ll.reverseList();
+    // Choose one reversal method:
+    ll.reverseIterative();    // Method 1
+    // ll.reverseRecursive(); // Method 2
+    // ll.reverseUsingStack(); // Method 3
 
     cout << "Reversed List: ";
     ll.printll();
-
-    cout << ll.search(2) << endl;
 
     return 0;
 }
