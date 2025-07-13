@@ -1,91 +1,200 @@
+// #include <iostream>
+// using namespace std;
+
+// class node {
+// public:
+//     int data;
+//     node* next;
+
+//     node(int val) {
+//         data = val;
+//         next = NULL;
+//     }
+// };
+
+
+// class list {
+// private:
+//     node* head;
+
+// public:
+//     list() {
+//         head = NULL;
+//     }
+
+//     void insert(int val) {
+//         node* newNode = new node(val);
+//         if (head == NULL) {
+//             head = newNode;
+//         } else {
+//             node* temp = head;
+//             while (temp->next != NULL) {
+//                 temp = temp->next;
+//             }
+//             temp->next = newNode;
+//         }
+//     }
+
+//     void createCycle(int pos) {
+//         if (head == NULL || pos <= 0) return;
+//         node* temp = head;
+//         node* cycleNode = NULL;
+//         int count = 1;
+
+//         while (temp->next != NULL) {
+//             if (count == pos) {
+//                 cycleNode = temp;
+//             }
+//             temp = temp->next;
+//             count++;
+//         }
+
+//         if (cycleNode != NULL) {
+//             temp->next = cycleNode;
+//         }
+//     }
+
+//     node* getHead() {
+//         return head;
+//     }
+// };
+
+
+// class Solution {
+// public:
+//     bool hasCycle(node* head) {
+//         node* slow = head;
+//         node* fast = head;
+
+//         while (fast != NULL && fast->next != NULL) {
+//             slow = slow->next;
+//             fast = fast->next->next;
+
+//             if (slow == fast) {
+//                 cout<<slow->data;
+//                 return true; 
+//             }
+//         }
+//         return false; 
+//     }
+// };
+
+
+// int main() {
+//     list myList;
+//     myList.insert(10);
+//     myList.insert(20);
+//     myList.insert(30);
+//     myList.insert(40);
+//     myList.insert(50);
+
+    
+//     myList.createCycle(2);
+
+//     Solution solver;
+//     if (solver.hasCycle(myList.getHead())) {
+//         cout << "Cycle detected in the linked list." << endl;
+//     } else {
+//         cout << "No cycle in the linked list." << endl;
+//     }
+
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// now remove and give starting node of cycle 
+
 #include <iostream>
 using namespace std;
 
-// Define the Node structure
-class Node {
-public:
-    int data;
-    Node* next;
-
-    Node(int val) {
-        data = val;
-        next = NULL;
-    }
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
 };
 
-// Define the Linked List class
-class LinkedList {
-private:
-    Node* head;
-
+class Solution {
 public:
-    LinkedList() {
-        head = NULL;
-    }
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        bool iscycle = false;
 
-    // Function to insert at the end
-    void insert(int val) {
-        Node* newNode = new Node(val);
-        if (head == NULL) {
-            head = newNode;
-            return;
-        }
-
-        Node* temp = head;
-        while (temp->next != NULL)
-            temp = temp->next;
-
-        temp->next = newNode;
-    }
-
-    // Function to print the list
-    void display() {
-        Node* temp = head;
-        while (temp != NULL) {
-            cout << temp->data << " -> ";
-            temp = temp->next;
-        }
-        cout << "NULL" << endl;
-    }
-
-    // Function to find and print the middle node
-    void printMiddle() {
-        if (head == NULL) {
-            cout << "List is empty!" << endl;
-            return;
-        }
-
-        Node* slow = head;
-        Node* fast = head;
-
-        // Move slow by 1 and fast by 2
+  
         while (fast != NULL && fast->next != NULL) {
             slow = slow->next;
             fast = fast->next->next;
+            if (slow == fast) {
+                iscycle = true;
+                break;
+            }
         }
 
-        cout << "Middle element is: " << slow->data << endl;
+        if (!iscycle) {
+            return NULL;
+        }
+
+        slow = head;
+        ListNode *prev = NULL;
+        while (slow != fast) {
+            slow = slow->next;
+            prev = fast;
+            fast = fast->next;
+        }
+
+        if (prev != NULL) {
+            prev->next = NULL;
+        }
+
+        return slow;
     }
 };
 
-// Main function
+
+void printList(ListNode* head) {
+    while (head != NULL) {
+        cout << head->val << " -> ";
+        head = head->next;
+    }
+    cout << "NULL" << endl;
+}
+
 int main() {
-    LinkedList list;
-    int n, val;
 
-    cout << "Enter number of elements: ";
-    cin >> n;
+    ListNode* head = new ListNode(3);
+    ListNode* second = new ListNode(2);
+    ListNode* third = new ListNode(0);
+    ListNode* fourth = new ListNode(-4);
 
-    cout << "Enter elements:" << endl;
-    for (int i = 0; i < n; i++) {
-        cin >> val;
-        list.insert(val);
+
+    head->next = second;
+    second->next = third;
+    third->next = fourth;
+    fourth->next = second; 
+
+    Solution sol;
+    ListNode* startCycle = sol.detectCycle(head);
+
+    if (startCycle != NULL) {
+        cout << "Cycle detected at node with value: " << startCycle->val << endl;
+    } else {
+        cout << "No cycle detected." << endl;
     }
 
-    cout << "\nLinked List: ";
-    list.display();
-
-    list.printMiddle();
+    
+    cout << "List after removing cycle: ";
+    printList(head);
 
     return 0;
 }
