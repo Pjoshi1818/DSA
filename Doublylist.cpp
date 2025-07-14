@@ -56,6 +56,22 @@ public:
         }
     }
 
+
+
+                        void pop_front(){
+                            if(head == NULL){
+                                cout<<"empty";
+                            }
+                            node* temp = head;
+                            head = head->next;
+                            if(head != NULL){
+                            head ->prev = NULL;
+                        }
+                        temp->next = NULL;
+                        delete temp;
+
+                        }
+
     void print()
     {
         node *temp;
@@ -66,16 +82,24 @@ public:
             temp = temp->next;
         }
         cout << "NULL";
+            cout<<endl;
     }
+     
 };
 int main()
 {
 
     d_LIST dll;
-       dll.push_front(500);
+    
+    cout<<"befour pop\n";
+    dll.push_front(500);
     dll.push_back(52);
     dll.push_front(500);
     dll.push_back(852);
+
     dll.print();
+    cout<<"\nafter pop\n";
+dll.pop_front();
+      dll.print();
     return 0;
 }
