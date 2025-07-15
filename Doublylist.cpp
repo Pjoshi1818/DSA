@@ -61,6 +61,7 @@ public:
                         void pop_front(){
                             if(head == NULL){
                                 cout<<"empty";
+                                return;
                             }
                             node* temp = head;
                             head = head->next;
@@ -69,6 +70,25 @@ public:
                         }
                         temp->next = NULL;
                         delete temp;
+
+                        }
+
+
+
+                        void pop_back(){
+                            if(head == NULL){
+                                cout<<"empty";
+                                return;
+                            }
+                            node* temp = tail;
+                            tail = tail->prev;
+                                if(tail != NULL){
+                            tail->next = NULL;}
+                            temp->prev = NULL;
+                            delete temp;
+
+
+
 
                         }
 
