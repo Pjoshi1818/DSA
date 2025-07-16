@@ -42,7 +42,7 @@ public:
     }
 
     void print() {
-        if (head == NULL) return;   
+        if (head == NULL) return;      
 
         node* temp = head;
         do {

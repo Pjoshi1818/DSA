@@ -65,9 +65,9 @@ public:
                             }
                             node* temp = head;
                             head = head->next;
-                            if(head != NULL){
+                            if(head != NULL)
                             head ->prev = NULL;
-                        }
+                        
                         temp->next = NULL;
                         delete temp;
 
