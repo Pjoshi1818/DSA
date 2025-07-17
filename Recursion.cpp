@@ -1,15 +1,35 @@
+// #include<iostream>
+// using namespace std;
+// void fec(int n){
+//    if(n<0){
+//     return;
+//    }
+
+//     cout<<n<<" ";
+//     fec(n-1);
+// }
+// int main(){
+// int n ;
+// n=4;
+// fec(n);
+//     return 0;
+// }
+
+
+// factorial 
+
+
 #include<iostream>
 using namespace std;
-void print(int n){
-   if(n<0){
-    return  ;
-   } cout<<n<<" ";
-    n--;
-    print(n);
+int fec(int n){
+        if(n==0){
+            return 1;   
+        }
+        return n* fec(n-1);
 }
 int main(){
 int n ;
 n=4;
-print(n);
+cout<<fec(n)<<"  ";
     return 0;
 }
