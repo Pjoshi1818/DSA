@@ -27,17 +27,17 @@
 
 // non pointer 
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-int main() {
-    char ch;
-    cout << "Enter a character: ";
-    cin >> ch;
+// int main() {
+//     char ch;
+//     cout << "Enter a character: ";
+//     cin >> ch;
 
-    int ascii = ch;  // Implicitly converts char to ASCII integer
-    cout << "Character: " << ch << endl;
-    cout << "ASCII value: " << ascii << endl;
+//     int ascii = ch;  // Implicitly converts char to ASCII integer
+//     cout << "Character: " << ch << endl;
+//     cout << "ASCII value: " << ascii << endl;
 
-    return 0;
-}
+//     return 0;
+// }
