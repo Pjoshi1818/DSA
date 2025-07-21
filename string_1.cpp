@@ -19,19 +19,32 @@
 
             // string ***
 
-#include<iostream>
-#include<cstring>
-using namespace std;
-int main(){
-    string ch ; 
+// #include<iostream>
+// #include<cstring>
+// using namespace std;
+// int main(){
+//     string ch ; 
 
-    //string is a class in C++ (from the <string> header),
-    // and when we declare a variable of type string, we're basically creating an object of the string class.
+//     //string is a class in C++ (from the <string> header),
+//     // and when we declare a variable of type string, we're basically creating an object of the string class.
 
     
-    getline(cin ,ch);
-    cout<<ch;
+//     getline(cin ,ch);
+//     cout<<ch;
 
-    return 0;
+//     return 0;
 
+// }
+
+
+#include<iostream>
+ #include<cstring>
+using namespace std;
+int main(){
+    string str = "pankaj joshi";// dynamic => run time resize:
+    cout<<str<<endl;
+
+    str ="raja ji";
+    cout<<str  ;
+   
 }
