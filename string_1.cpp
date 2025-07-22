@@ -37,19 +37,28 @@
 // }
 
 
-#include<iostream>
- #include<cstring>
-using namespace std;
-int main(){
-    string str = "pankaj joshi";// dynamic => run time resize:
-    cout<<str<<endl;
-   cout<<str.length() <<endl;
-    str ="raja ji";
-    cout<<str <<endl ;
-      cout<<str.length()<<endl;
+// #include<iostream>
+//  #include<cstring>
+// using namespace std;
+// int main(){
+//     string str = "pankaj joshi";// dynamic => run time resize:
+//     cout<<str<<endl;
+//    cout<<str.length() <<endl;
+//     str ="raja ji";
+//     cout<<str <<endl ;
+//       cout<<str.length()<<endl;
+
+
+
+
+
+// string ch= "pankaj joshi"; //   print using for each loop
+// for(char c: ch){
+//         cout<<c;
+// }
 
    
-}
+// }
 
 
 
