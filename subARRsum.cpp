@@ -1,4 +1,7 @@
-// #include<iostream>
+// maximum subarray sum  problem 
+         //    s = n(*n+1)   /  2
+
+// #include<iostream>    
 // #include<climits>
 // using namespace std;
 // int main(){
