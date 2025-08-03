@@ -1,17 +1,39 @@
 #include<iostream>
+#include<cstring>
+#include<algorithm>
+#include<vector>
+#include <string>
+
 using namespace std;
-int main(){
-    string pj = "pankaj joshi";
-    int start = 0;
-    int end = pj.length()-1;
-    // cout<<end;
 
-    while(start <= end){
-        swap(pj[start],pj[end]);
-        start++;
-        end--;
+string rvw(string s){
 
+  int n = s.length();
+        string ans = "";
+
+         reverse(s.begin(),s.end());
+
+        for(int i= 0; i<=n ;i++){
+            string word = "";
+            while (i<n&&s[i]!=' '){
+                word += s[i];
+                i++;
+            }
+         
+        reverse(word.begin(),word.end());
+        if(word.length() > 0){
+            ans += " "+word;
+        }
     }
+return ans.substr(1);
 
-    cout<<pj<<endl;
+
+
+}
+
+
+int main(){
+        string s = "pankaj joshi";
+      cout<<":-"<<rvw(s);
+
 }
