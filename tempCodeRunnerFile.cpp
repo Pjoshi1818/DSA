@@ -1,39 +1,46 @@
-#include<iostream>
-#include<cstring>
-#include<algorithm>
-#include<vector>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-string rvw(string s){
+class Solution {
+public:
+  void sortColors(vector<int>& nums) {
+     int st;
+     int pass;
+     st = pass = 0;
+        int end = (int)nums.size() - 1;
 
-  int n = s.length();
-        string ans = "";
 
-         reverse(s.begin(),s.end());
-
-        for(int i= 0; i<=n ;i++){
-            string word = "";
-            while (i<n&&s[i]!=' '){
-                word += s[i];
-                i++;
+        while(pass<=end){
+            if(nums[pass] == 0){
+                swap(nums[st],nums[pass]);
+                st++;
+                pass++;
             }
-         
-        reverse(word.begin(),word.end());
-        if(word.length() > 0){
-            ans += " "+word;
+            else if(nums[pass]==1){
+                pass++;
+            }
+            else if(nums[pass]==2){
+                swap(nums[pass],nums[end]);
+                end--;
+            }
         }
     }
-return ans.substr(1);
+};
 
+int main() {
+    Solution sol;
 
+    vector<int> nums = {2, 0, 2, 1, 1, 0};
 
-}
+    cout << "Before sorting: ";
+    for (int n : nums) cout << n << " ";
+    cout << endl;
 
+    sol.sortColors(nums); 
 
-int main(){
-        string s = "pankaj joshi";
-      cout<<":-"<<rvw(s);
+    cout << "After sorting:  ";
+    for (int n : nums) cout << n << " ";
+    cout << endl;
 
+    return 0;
 }
