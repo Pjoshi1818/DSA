@@ -1,38 +1,38 @@
-#include <iostream>
+#include<iostream>
 #include <unordered_map>
 using namespace std;
 
-bool isAnagram(string s, string t) {
-  
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) { 
+       unordered_map<char,int> fq1;
+       unordered_map<char,int> fq2;
 
-    unordered_map<char, int> freq;
+       for(char st : s){     
+        fq1[st]++;
+       }
+       for(char pt: t){
+        fq2[pt]++;
+       }
+       
+       cout << "Map for string s:" << endl;
+       for(auto p: fq1){
+           cout << p.first << " " << p.second << endl;
+       }
 
-    for (char c : s) {
-        freq[c]++;
+       cout << "Map for string t:" << endl;
+       for(auto p: fq2){
+           cout << p.first << " " << p.second << endl;
+       }
+
+       return true;
     }
+};
 
-    for (char c : t) {
-        freq[c]--;
-    }
-
-    for (auto p : freq) {
-        if (p.second != 0) return false;
-    }
-
-    return true;
-}
-
-int main() {
-    string s1, s2;
-    cout << "Enter first string: ";
-    cin >> s1;
-    cout << "Enter second string: ";
-    cin >> s2;
-
-    if (isAnagram(s1, s2))
-        cout << "Yes, Anagram" ;
-    else
-        cout << "Not Anagram";
-
+int main(){
+    Solution obj;
+    string s = "foo";
+    string t = "saa";
+    obj.isIsomorphic(s , t); 
     return 0;
 }
